@@ -1,6 +1,9 @@
-export abstract class Roupa implements RoupaRepository {
+import { RoupaInterface } from './../Repository/RoupaInterface';
+
+export abstract class Roupa implements RoupaInterface {
+    private _id: number;
     private _tipo: string;
-    private _tamanho: Array<string> = new Array<string>();
+    private _tamanho: string;
     private _tecido: string;
     private _cor: string;
     private _marca: string;
@@ -8,7 +11,8 @@ export abstract class Roupa implements RoupaRepository {
     private _material: string;
     private _quantidade: number;
 
-    constructor(tipo: string, tamanho: string[], tecido: string, cor: string, marca: string, preco: string, material: string, quantidade: number) {
+    constructor(id: number, tipo: string, tamanho: string, tecido: string, cor: string, marca: string, preco: string, material: string, quantidade: number) {
+        this._id = id;
         this._tipo = tipo;
         this._tamanho = tamanho;
         this._tecido = tecido;
@@ -19,6 +23,14 @@ export abstract class Roupa implements RoupaRepository {
         this._quantidade = quantidade;
     }
 
+    public get id(): number {
+        return this._id;
+    }
+
+    public set id(value: number) {
+        this._id = value;
+    }
+
     public get tipo(): string {
         return this._tipo;
     }
@@ -27,11 +39,11 @@ export abstract class Roupa implements RoupaRepository {
         this._tipo = value;
     }
 
-    public get tamanho(): string[] {
+    public get tamanho(): string {
         return this._tamanho;
     }
 
-    public set tamanho(value: string[]) {
+    public set tamanho(value: string) {
         this._tamanho = value;
     }
 

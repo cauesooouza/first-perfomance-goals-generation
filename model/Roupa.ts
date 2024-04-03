@@ -7,11 +7,10 @@ export abstract class Roupa implements RoupaInterface {
     private _tecido: string;
     private _cor: string;
     private _marca: string;
-    private _preco: string;
-    private _material: string;
+    private _preco: number;
     private _quantidade: number;
 
-    constructor(id: number, tipo: string, tamanho: string, tecido: string, cor: string, marca: string, preco: string, material: string, quantidade: number) {
+    constructor(id: number, tipo: string, tamanho: string, tecido: string, cor: string, marca: string, preco: number, quantidade: number) {
         this._id = id;
         this._tipo = tipo;
         this._tamanho = tamanho;
@@ -19,7 +18,6 @@ export abstract class Roupa implements RoupaInterface {
         this._cor = cor;
         this._marca = marca;
         this._preco = preco;
-        this._material = material;
         this._quantidade = quantidade;
     }
 
@@ -70,19 +68,12 @@ export abstract class Roupa implements RoupaInterface {
     public set marca(value: string) {
         this._marca = value;
     }
-    public get preco(): string {
+    public get preco(): number {
         return this._preco;
     }
 
-    public set preco(value: string) {
+    public set preco(value: number) {
         this._preco = value;
-    }
-
-    public get material(): string {
-        return this._material;
-    }
-    public set material(value: string) {
-        this._material = value;
     }
 
     public get quantidade(): number {
@@ -137,9 +128,12 @@ Não é necessário passar a ferro na maioria dos casos, mas se precisar, use um
     }
 
     exibirDetalhes(): void {
-        console.log(`Essa é uma ${this.tipo} da marca ${this._marca}, feita de ${this._tecido} e disponível na cor ${this._cor}.
+        console.log(`
+************************************************************************************************************
+Essa é uma ${this.tipo} da marca ${this._marca}, feita de ${this._tecido} e disponível na cor ${this._cor}.
 Ela está disponível nos seguintes tamanhos: ${this._tamanho}.
 O tecido utilizado é ${this._tecido}, e temos ${this.quantidade} unidades disponíveis.
-Cada peça está precificada em ${this.preco}.`)
+Cada peça está precificada em ${this.preco}.
+`)
     }
 }

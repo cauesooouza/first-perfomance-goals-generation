@@ -3,7 +3,7 @@ import { Roupa } from "../model/roupa";
 
 export class RoupaController implements RoupaRepository {
     private estoqueDeRoupas: Array<Roupa> = new Array<Roupa>();
-    private id: number;
+    private id: number = 0;
 
     listarTodosAsRoupas(): void {
         if (this.estoqueDeRoupas.length > 0) {
@@ -38,15 +38,44 @@ export class RoupaController implements RoupaRepository {
         console.log("Roupa registrada com sucesso!");
     }
 
-    atualizarRoupa(idRoupa: number, opcaoAtualizar: number, entradaDeDado: string | number): void {
+    atualizarRoupa(idRoupa: number, opcaoAtualizar: string, entradaDeDado: string | number): void {
         let roupaEncotrada = this.encontrarRoupa(idRoupa);
 
         if (roupaEncotrada) {
-            try {
-                roupaEncotrada[`_${opcaoAtualizar}`] = entradaDeDado;
-            } catch (error) {
-                console.error(error);
+            switch (opcaoAtualizar) {
+                case 'tipo':
+                    roupaEncotrada.tipo = entradaDeDado as string;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'tamanho':
+                    roupaEncotrada.tamanho = entradaDeDado as string;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'tecido':
+                    roupaEncotrada.tecido_1 = entradaDeDado as string;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'cor':
+                    roupaEncotrada.cor = entradaDeDado as string;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'marca':
+                    roupaEncotrada.marca = entradaDeDado as string;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'preco':
+                    roupaEncotrada.preco = entradaDeDado as number;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                case 'quantidade':
+                    roupaEncotrada.quantidade = entradaDeDado as number;
+                    console.log("Atualizado com sucesso!");
+                    break;
+                default:
+                    break;
             }
+        } else {
+            console.log("Roupa não encontrada!");
         }
     }
 

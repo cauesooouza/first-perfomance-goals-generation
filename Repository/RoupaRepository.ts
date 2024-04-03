@@ -5,7 +5,7 @@ export interface RoupaRepository {
     listarTodosAsRoupas(): void;
     listarRoupaPorId(idRoupa: number): void;
     registrarRoupa(roupa: Roupa): void;
-    atualizarRoupa(idRoupa: number, opcaoAtualizar: number, entradaDeDado: string): void;
+    atualizarRoupa(idRoupa: number, opcaoAtualizar: string, entradaDeDado: string): void;
     removerRoupaDoRegistro(idRoupa: number): void;
     gerarId(): number;
 }
